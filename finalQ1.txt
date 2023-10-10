@@ -1,0 +1,30 @@
+start: qreadfirst
+accept: qaccept
+reject: qreject
+
+qfindstart, 0 -> qfindstart, 0, l
+qfindstart, 1 -> qfindstart, 1, l
+qfindstart, # -> qfindstart, #, l
+qfindstart, _ -> qreadfirst, _, r
+
+qreadfirst, 0 -> qseek0before, _, r
+qreadfirst, 1 -> qseek1before, _, r
+qreadfirst, # -> qaccept, #, r
+
+qseek0before, 0 -> qseek0before, 0, r
+qseek0before, 1 -> qseek0before, 1, r
+qseek0before, # -> qseek0after, #, r
+
+qseek1before, 0 -> qseek1before, 0, r
+qseek1before, 1 -> qseek1before, 1, r
+qseek1before, # -> qseek1after, #, r
+
+qseek0after, 0 -> qfindstart, #, l
+qseek0after, 1 -> qseek0after, #, r
+qseek0after, # -> qseek0after, #, r
+qseek0after, _ -> qreject, _, r
+
+qseek1after, 0 -> qseek1after, #, r
+qseek1after, 1 -> qfindstart, #, l
+qseek1after, # -> qseek1after, #, r
+qseek1after, _ -> qreject, _, r
