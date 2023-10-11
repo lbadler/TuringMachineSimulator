@@ -3,11 +3,13 @@ This project simulates the execution of a turing machine on a provided input str
 
 The turing machine should be in a separate file encoded in the following manner:
 Line 1 should include the starting state
-- ex: "start: qinit"
+ex: "start: qinit"
+
 Line 2 should include the list of accepting states, separated by commas and spaces
- - ex: "accept: qgood, qyes, qhappy"
+ex: "accept: qgood, qyes, qhappy"
+
 Line 3 should include the list of rejecting states, separated by commas and spaces
-- ex: "reject: qgood, qyes, qhappy"
+ex: "reject: qgood, qyes, qhappy"
 
 The remainder of the file is used for transitions, encoded as follows:
 "qinit, 0 -> qmoving, 1, r"
